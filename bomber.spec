@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : bomber
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/bomber-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/bomber-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/bomber-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/bomber-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/bomber-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/bomber-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: bomber-bin
-Requires: bomber-data
-Requires: bomber-license
-Requires: bomber-locales
+Requires: bomber-bin = %{version}-%{release}
+Requires: bomber-data = %{version}-%{release}
+Requires: bomber-license = %{version}-%{release}
+Requires: bomber-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 THEMES IN BOMBER
@@ -30,8 +30,8 @@ This file explains the format of the themes used by bomber.
 %package bin
 Summary: bin components for the bomber package.
 Group: Binaries
-Requires: bomber-data
-Requires: bomber-license
+Requires: bomber-data = %{version}-%{release}
+Requires: bomber-license = %{version}-%{release}
 
 %description bin
 bin components for the bomber package.
@@ -70,26 +70,26 @@ locales components for the bomber package.
 
 
 %prep
-%setup -q -n bomber-18.08.0
+%setup -q -n bomber-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535224545
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549878137
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535224545
+export SOURCE_DATE_EPOCH=1549878137
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/bomber
-cp COPYING %{buildroot}/usr/share/doc/bomber/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/bomber/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/bomber
+cp COPYING %{buildroot}/usr/share/package-licenses/bomber/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/bomber/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -157,9 +157,9 @@ popd
 /usr/share/doc/HTML/uk/bomber/mainscreen.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/bomber/COPYING
-/usr/share/doc/bomber/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/bomber/COPYING
+/usr/share/package-licenses/bomber/COPYING.DOC
 
 %files locales -f bomber.lang
 %defattr(-,root,root,-)
