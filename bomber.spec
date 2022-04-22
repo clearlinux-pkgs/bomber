@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : bomber
-Version  : 21.12.3
-Release  : 38
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/bomber-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/bomber-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/bomber-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 39
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/bomber-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/bomber-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/bomber-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GFDL-1.2 LGPL-2.0
+License  : BSD-3-Clause CC0-1.0 GFDL-1.2 LGPL-2.0
 Requires: bomber-bin = %{version}-%{release}
 Requires: bomber-data = %{version}-%{release}
 Requires: bomber-license = %{version}-%{release}
@@ -21,7 +21,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
 THEMES IN BOMBER
@@ -71,15 +70,15 @@ locales components for the bomber package.
 
 
 %prep
-%setup -q -n bomber-21.12.3
-cd %{_builddir}/bomber-21.12.3
+%setup -q -n bomber-22.04.0
+cd %{_builddir}/bomber-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646529043
+export SOURCE_DATE_EPOCH=1650664655
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,11 +94,14 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646529043
+export SOURCE_DATE_EPOCH=1650664655
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/bomber
-cp %{_builddir}/bomber-21.12.3/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/7697008f58568e61e7598e796eafc2a997503fde
-cp %{_builddir}/bomber-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/bomber-22.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/bomber/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/bomber-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/bomber/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/bomber-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/bomber/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/bomber-22.04.0/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/bomber-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
@@ -169,7 +171,10 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/bomber/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/bomber/7697008f58568e61e7598e796eafc2a997503fde
+/usr/share/package-licenses/bomber/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/bomber/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 /usr/share/package-licenses/bomber/a4c60b3fefda228cd7439d3565df043192fef137
 
 %files locales -f bomber.lang
