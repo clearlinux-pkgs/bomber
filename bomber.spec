@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : bomber
-Version  : 22.04.2
-Release  : 41
-URL      : https://download.kde.org/stable/release-service/22.04.2/src/bomber-22.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.2/src/bomber-22.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.2/src/bomber-22.04.2.tar.xz.sig
+Version  : 22.04.3
+Release  : 42
+URL      : https://download.kde.org/stable/release-service/22.04.3/src/bomber-22.04.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.3/src/bomber-22.04.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.3/src/bomber-22.04.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 GFDL-1.2 LGPL-2.0
@@ -70,15 +70,15 @@ locales components for the bomber package.
 
 
 %prep
-%setup -q -n bomber-22.04.2
-cd %{_builddir}/bomber-22.04.2
+%setup -q -n bomber-22.04.3
+cd %{_builddir}/bomber-22.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654829213
+export SOURCE_DATE_EPOCH=1657563317
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -94,14 +94,14 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654829213
+export SOURCE_DATE_EPOCH=1657563317
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/bomber
-cp %{_builddir}/bomber-22.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/bomber/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/bomber-22.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/bomber/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/bomber-22.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/bomber/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/bomber-22.04.2/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/7697008f58568e61e7598e796eafc2a997503fde
-cp %{_builddir}/bomber-22.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/bomber-22.04.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/bomber/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/bomber-22.04.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/bomber/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/bomber-22.04.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/bomber/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/bomber-22.04.3/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/7697008f58568e61e7598e796eafc2a997503fde
+cp %{_builddir}/bomber-22.04.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/bomber/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
