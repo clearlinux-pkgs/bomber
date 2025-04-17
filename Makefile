@@ -1,5 +1,5 @@
 PKG_NAME := bomber
-URL = https://download.kde.org/stable/release-service/24.12.3/src/bomber-24.12.3.tar.xz
+URL = https://download.kde.org/stable/release-service/25.04.0/src/bomber-25.04.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
